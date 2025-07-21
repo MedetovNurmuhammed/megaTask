@@ -24,12 +24,8 @@ public class RedisConfig {
     public ObjectMapper redisObjectMapper() {
         ObjectMapper mapper = new ObjectMapper();
 
-        // Поддержка JSR310 (LocalDateTime)
         mapper.registerModule(new JavaTimeModule());
         mapper.disable(com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-
-        // НЕ включаем типизацию - это причина проблем
-        // mapper.activateDefaultTyping(...);
 
         return mapper;
     }
